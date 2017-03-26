@@ -27,6 +27,8 @@ having/order by, set union/intersection/minus, nested queries(in the from/with c
 set membership/comparison, test empty relation/absence of duplicate tuples, delete/update tuples, 
 insert tuples selected from one table into another)
 
+ALTER TABLE 'player' CHANGE last_Played last_time_Played timestamp;
+
 CREATE TRIGGER trigger_name BEFORE INSERT ON column
 FOR EACH ROW
 BEGIN
@@ -73,7 +75,7 @@ CREATE TABLE Spell(
 	Attack_Name	varchar(30)	not null,
 	Spell_Slot	int(10,0)	not null
 	Requirement	varchar(50)
-  	Primary Key(Attack_Name)
+  	Primary Key(Attack_Name)Pladddd
   	Foreign Key(Attack_Name) references Attack):
   
 CREATE TABLE Region(
@@ -111,3 +113,8 @@ CREATE TABLE Monster_Instance(
 
 
 5. Changes made to specification with justifications
+added check constraints on: damage column in attack, needs to be greater than 0
+added cascase on update/delete for foreign columns
+changed date column in Player to timestamp instead(rename)
+
+
