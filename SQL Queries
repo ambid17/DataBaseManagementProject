@@ -1,1 +1,39 @@
+1. Team members: Sabien Ambrose (responsible for all)
 
+2. Create and populate queries
+
+CREATE TABLE IF NOT EXISTS 'attack' ('Description' varchar(30) DEFAULT NULL, 'Damage' varchar(30) NOT NULL, PRIMARY KEY ('Attack Name') )ENGINE=InnoDB
+CREATE TABLE IF NOT EXISTS 'characters' ()
+CREATE TABLE IF NOT EXISTS 'item' ()
+CREATE TABLE IF NOT EXISTS 'item_instance' ()
+CREATE TABLE IF NOT EXISTS 'monster' ()
+CREATE TABLE IF NOT EXISTS 'monster_instance' ()
+CREATE TABLE IF NOT EXISTS 'normal_attack' ()
+CREATE TABLE IF NOT EXISTS 'player' ()
+CREATE TABLE IF NOT EXISTS 'region' ()
+CREATE TABLE IF NOT EXISTS 'spell' ()
+
+ALTER TABLE '' ADD CONSTRAINT '_ibfk_1' FOREIGN KEY ('') REFERENCES '' ('') ON DELETE CASCADE ON UPDATE CASCADE
+
+INSERT INTO ''() VALUES
+(),
+(),
+();
+
+3. SQL queries with results and description 
+(create, constraints(foreign, primary, unique, check),
+joins, renaming, string operations, group by, aggregation, 
+having/order by, set union/intersection/minus, nested queries(in the from/with clause), 
+set membership/comparison, test empty relation/absence of duplicate tuples, delete/update tuples, 
+insert tuples selected from one table into another)
+
+CREATE TRIGGER trigger_name BEFORE INSERT ON column
+FOR EACH ROW
+BEGIN
+if() THEN
+INSERT INTO 'table'()
+END
+
+4. Original SQL specifications
+
+5. Changes made to specification with justifications
