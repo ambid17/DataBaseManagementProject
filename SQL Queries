@@ -35,5 +35,79 @@ INSERT INTO 'table'()
 END
 
 4. Original SQL specifications
+CREATE TABLE Player(
+	Player_ID	int(1000,0)	not null,
+	Player_Name 	varchar(30)	not null,
+	Last_played	date	not null,
+Primary key(Player_ID));
+
+CREATE TABLE Character(
+	Char_name	varchar(30)	not null,
+	Char_level	numeric(30,0)	not null,
+	HP		numerica(200,0)	not null,
+	Current_HP	numerical(200,0)	not null,
+	AC		numeric(30,0)	not null,
+	Speed 		varchar(30)	not null,
+	Strength 	varchar(30)	not null,
+	Constitution 	varchar(30)	not null,
+	Dexterity 	varchar(30)	not null,
+	Intelligence 	varchar(30)	not null,
+	Wisdom 	varchar(30)	not null,
+	Charisma 	varchar(30)	not null,
+  Primary key(Player_name, Char_name));
+  Foreign key(Player_name) references Player);
+
+CREATE TABLE Attack(
+	Attack_Name	varchar(30)	not null,
+	Description	varchar(300),
+	Damage	varchar(30),
+	Primary Key(Attack_Name)):
+
+CREATE TABLE Norm_Atk(
+	Attack_Name	varchar(30)	not null,
+	Weapon	varchar(30)	not null
+	Primary Key(Attack_Name)
+	Foreign Key(Attack_Name) references Attack):
+  
+CREATE TABLE Spell(
+	Attack_Name	varchar(30)	not null,
+	Spell_Slot	int(10,0)	not null
+	Requirement	varchar(50)
+  Primary Key(Attack_Name)
+  Foreign Key(Attack_Name) references Attack):
+  
+CREATE TABLE Region(
+	Region_Name		varchar(30)	not null,
+	Climate			varchar(30),
+  Map_Name		varchar(30)	not null,
+	Primary key(Region_name)):
+  
+CREATE TABLE Item_Instance(
+	Item_name		varchar(30)	not null,
+	Item_ID			int(1000,0)	not null,
+	Item_Stats		varchar(30),
+	Primary key(Item_Name, Item_ID),
+	Foreign key(Item_Name) references Item):
+  
+CREATE TABLE Item(
+	Item_Name		varchar(50)	not null,
+	Item_Description	varchar(300)	not null,
+	Primary key(Item_Name)):
+  
+CREATE TABLE Monster(
+	Monster_name		varchar(30)	not null,
+	Monster_level		numeric(30,0)	not null,
+	HP			numeric(300,0)	not null,
+	AC			numeric(30,0)	not null,
+	Speed 			varchar(30)	not null,
+  Primary key(Monster_name));):
+
+CREATE TABLE Monster_Instance(
+	Monster_name	varchar(30)	not null,
+	Monster_ID	numeric(1000,0),
+	Current_HP	numeric(300,0),
+	Primary key(Monster_name, Monster_ID),
+	Foreign key(Monster_name) references Monster):
+
 
 5. Changes made to specification with justifications
