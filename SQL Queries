@@ -40,7 +40,7 @@ END
 CREATE TABLE Player(
 	Player_ID	int(1000,0)	not null,
 	Player_Name 	varchar(30)	not null,
-	Last_played	date	not null,
+	Last_played	date	not null	default Now(),
 	Primary key(Player_ID));
 
 CREATE TABLE Character(
@@ -113,6 +113,8 @@ CREATE TABLE Monster_Instance(
 
 
 5. Changes made to specification with justifications
+included "if not exists" and the InnoDB engine declaration to my create statements
+added column is logged in to player, to keep track of whether the player is logged in. this allows me to create a trigger: if the isLoggedIn column goes from yes to no, then set the timestamp to the current time to Now(). ADD default of Now() to lastPlayedTime as well,
 added check constraints on: damage column in attack, needs to be greater than 0
 added cascase on update/delete for foreign columns
 changed date column in Player to timestamp instead(rename)
