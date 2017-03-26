@@ -39,7 +39,7 @@ CREATE TABLE Player(
 	Player_ID	int(1000,0)	not null,
 	Player_Name 	varchar(30)	not null,
 	Last_played	date	not null,
-Primary key(Player_ID));
+	Primary key(Player_ID));
 
 CREATE TABLE Character(
 	Char_name	varchar(30)	not null,
@@ -54,8 +54,8 @@ CREATE TABLE Character(
 	Intelligence 	varchar(30)	not null,
 	Wisdom 	varchar(30)	not null,
 	Charisma 	varchar(30)	not null,
-  Primary key(Player_name, Char_name));
-  Foreign key(Player_name) references Player);
+  	Primary key(Player_name, Char_name));
+  	Foreign key(Player_name) references Player);
 
 CREATE TABLE Attack(
 	Attack_Name	varchar(30)	not null,
@@ -73,13 +73,13 @@ CREATE TABLE Spell(
 	Attack_Name	varchar(30)	not null,
 	Spell_Slot	int(10,0)	not null
 	Requirement	varchar(50)
-  Primary Key(Attack_Name)
-  Foreign Key(Attack_Name) references Attack):
+  	Primary Key(Attack_Name)
+  	Foreign Key(Attack_Name) references Attack):
   
 CREATE TABLE Region(
 	Region_Name		varchar(30)	not null,
 	Climate			varchar(30),
-  Map_Name		varchar(30)	not null,
+  	Map_Name		varchar(30)	not null,
 	Primary key(Region_name)):
   
 CREATE TABLE Item_Instance(
@@ -100,7 +100,7 @@ CREATE TABLE Monster(
 	HP			numeric(300,0)	not null,
 	AC			numeric(30,0)	not null,
 	Speed 			varchar(30)	not null,
-  Primary key(Monster_name));):
+ 	Primary key(Monster_name));):
 
 CREATE TABLE Monster_Instance(
 	Monster_name	varchar(30)	not null,
