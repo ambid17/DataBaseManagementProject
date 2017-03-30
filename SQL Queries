@@ -1,57 +1,257 @@
 1. Team members: Sabien Ambrose (responsible for all)
 
 2. Create and populate queries
+CREATE TABLE `attack` (
+  `Attack_name` varchar(30) NOT NULL,
+  `Description` varchar(255) NOT NULL,
+  `Damage` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `player` (
+INSERT INTO `attack` (`Attack_name`, `Description`, `Damage`) VALUES
+('fireball', 'shoots a ball of flame', '10'),
+('Leaping Strike', 'Leap at and stab an enemy', '4'),
+('lightning', 'a bolt of lightning hits a foe', '4'),
+('Piercing Strike', 'Stab the enemy with a weapon', '2'),
+('Slashing Strike', 'Slash the enemy with a weapon', '3');
+
+CREATE TABLE `characters` (
+  `Char_name` varchar(50) NOT NULL,
+  `Char_level` int(2) NOT NULL,
+  `HP` int(3) NOT NULL,
+  `Current_HP` int(3) NOT NULL,
+  `AC` int(2) NOT NULL,
+  `Speed` int(2) NOT NULL,
+  `Strength` int(2) NOT NULL,
+  `Constitution` int(2) NOT NULL,
+  `Dexterity` int(2) NOT NULL,
+  `Intelligence` int(2) NOT NULL,
+  `Wisdom` int(2) NOT NULL,
+  `Charisma` int(2) NOT NULL,
+  `Player_ID` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `characters` (`Char_name`, `Char_level`, `HP`, `Current_HP`, `AC`, `Speed`, `Strength`, `Constitution`, `Dexterity`, `Intelligence`, `Wisdom`, `Charisma`, `Player_ID`) VALUES
+('Ambid', 2, 10, 10, 4, 30, 3, 4, 5, 3, 4, 5, 1001),
+('Angro', 2, 10, 10, 10, 10, 10, 9, 8, 7, 6, 8, 1001),
+('Arya', 5, 4, 9, 8, 7, 6, 6, 7, 4, 3, 2, 1003),
+('Darkfist', 4, 30, 4, 4, 7, 8, 9, 8, 8, 9, 0, 1001),
+('Sharkman', 5, 8, 8, 7, 8, 6, 7, 8, 8, 9, 7, 1002);
+
+CREATE TABLE `character_inventory` (
+  `Character_name` varchar(50) NOT NULL,
+  `Item_id` int(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `character_inventory` (`Character_name`, `Item_id`) VALUES
+('Ambid', 1),
+('Angro', 2),
+('Angro', 3),
+('Darkfist', 4),
+('Darkfist', 5),
+('Arya', 6);
+
+CREATE TABLE `item` (
+  `Item_name` varchar(50) NOT NULL,
+  `Item_description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `item` (`Item_name`, `Item_description`) VALUES
+('Bag of Holding', 'holds an infinite amount of items'),
+('experience pack', 'grants 1 level'),
+('food pack', 'heals 15 health'),
+('Gem of seeing', 'allow you to cloak'),
+('Magic Sword', 'extra damage');
+
+CREATE TABLE `item_instance` (
+  `Item_ID` int(4) NOT NULL,
+  `Item_Stats` varchar(30) NOT NULL,
+  `Item_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `item_instance` (`Item_ID`, `Item_Stats`, `Item_name`) VALUES
+(1, 'inventory + 100', 'Bag of Holding'),
+(2, 'inventory + 100', 'Bag of Holding'),
+(3, 'level +1', 'experience pack'),
+(4, 'hp +15', 'food pack'),
+(5, 'hidden', 'Gem of seeing'),
+(6, 'hidden', 'Gem of seeing'),
+(7, 'damage + 1', 'Magic Sword');
+
+CREATE TABLE `monster` (
+  `Monster_name` varchar(30) NOT NULL,
+  `Monster_level` int(2) NOT NULL,
+  `HP` int(3) NOT NULL,
+  `AC` int(2) NOT NULL,
+  `Speed` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `monster` (`Monster_name`, `Monster_level`, `HP`, `AC`, `Speed`) VALUES
+('Dragon', 10, 100, 10, 10),
+('Goblin', 4, 10, 3, 3),
+('Orc', 5, 10, 3, 2),
+('Troll', 1, 4, 2, 2);
+
+CREATE TABLE `monster_instance` (
+  `Monster_name` varchar(30) NOT NULL,
+  `Monster_ID` int(4) NOT NULL,
+  `Current_HP` int(3) NOT NULL,
+  `Region_name` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `monster_instance` (`Monster_name`, `Monster_ID`, `Current_HP`, `Region_name`) VALUES
+('Dragon', 1, 19, 'brittania'),
+('Goblin', 2, 1, ''),
+('Dragon', 3, 14, ''),
+('Goblin', 4, 1, ''),
+('Goblin', 5, 1, '');
+
+CREATE TABLE `norm_atk` (
+  `Attack_name` varchar(30) NOT NULL,
+  `Weapon` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `norm_atk` (`Attack_name`, `Weapon`) VALUES
+('Leaping Strike', 'sword'),
+('Piercing Strike', 'bow'),
+('Slashing Strike', 'axe');
+
+CREATE TABLE `player` (
   `Player_ID` int(3) NOT NULL,
   `Player_name` varchar(30) NOT NULL,
-  `Last_played_time` timestamp DEFAULT NULL
-)
-CREATE TABLE IF NOT EXISTS 'character' (	
-	Char_name	varchar(30)	not null,
-	Char_level	numeric(30,0)	not null,
-	HP		numerica(200,0)	not null,
-	Current_HP	numerical(200,0)	not null,
-	AC		numeric(30,0)	not null,
-	Speed 		varchar(30)	not null,
-	Strength 	varchar(30)	not null,
-	Constitution 	varchar(30)	not null,
-	Dexterity 	varchar(30)	not null,
-	Intelligence 	varchar(30)	not null,
-	Wisdom 	varchar(30)	not null,
-	Charisma 	varchar(30)	not null,
-  	Primary key(Player_name, Char_name));
-  	Foreign key(Player_name) references Player);
-	)
-CREATE TABLE IF NOT EXISTS 'item' ()
-CREATE TABLE IF NOT EXISTS 'item_instance' ()
-CREATE TABLE IF NOT EXISTS 'monster' ()
-CREATE TABLE IF NOT EXISTS 'monster_instance' ()
-CREATE TABLE IF NOT EXISTS 'normal_attack' ()
-CREATE TABLE IF NOT EXISTS 'player' ()
-CREATE TABLE IF NOT EXISTS 'region' ()
-CREATE TABLE IF NOT EXISTS 'spell' ()
+  `Last_played_time` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `player` (`Player_ID`, `Player_name`, `Last_played_time`) VALUES
+(1001, 'Sabien Ambrose', '2017-03-29 15:11:11'),
+(1002, 'Drago Bloodfist', '2017-03-23 17:11:21'),
+(1003, 'Cassie Pickens', '2017-03-20 08:11:11');
+
+CREATE TABLE `region` (
+  `Region_name` varchar(30) NOT NULL,
+  `Climate` varchar(30) NOT NULL,
+  `Map_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `region` (`Region_name`, `Climate`, `Map_name`) VALUES
+('brittania', 'jungle', 'map 001'),
+('Farsia', 'tundra', 'map 001'),
+('munich', 'arid', 'map 001'),
+('townsend', 'tropical', 'map 001');
+
+CREATE TABLE `spell` (
+  `Attack_name` varchar(30) NOT NULL,
+  `Spell_slot` int(2) NOT NULL,
+  `Requirement` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `spell` (`Attack_name`, `Spell_slot`, `Requirement`) VALUES
+('fireball', 1, 'charcoal'),
+('lightning', 2, 'metal scrap');
+
+CREATE TABLE `world_list` (
+  `Map_name` varchar(30) NOT NULL,
+  `player_ID` int(3) NOT NULL,
+  `Region_name` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `world_list` (`Map_name`, `player_ID`, `Region_name`) VALUES
+('map 001', 1001, 'brittania'),
+('map 001', 1002, 'munich');
+ALTER TABLE `attack`
+  ADD PRIMARY KEY (`Attack_name`);
+ALTER TABLE `characters`
+  ADD PRIMARY KEY (`Char_name`),
+  ADD KEY `Player_ID` (`Player_ID`);
+ALTER TABLE `character_inventory`
+  ADD PRIMARY KEY (`Character_name`,`Item_id`),
+  ADD UNIQUE KEY `Item_id` (`Item_id`);
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`Item_name`);
+ALTER TABLE `item_instance`
+  ADD PRIMARY KEY (`Item_ID`),
+  ADD KEY `item_name_fk` (`Item_name`);
+ALTER TABLE `monster`
+  ADD PRIMARY KEY (`Monster_name`);
+ALTER TABLE `monster_instance`
+  ADD PRIMARY KEY (`Monster_ID`),
+  ADD KEY `monster_instance_ibfk_1` (`Monster_name`);
+ALTER TABLE `norm_atk`
+  ADD PRIMARY KEY (`Attack_name`);
+ALTER TABLE `player`
+  ADD PRIMARY KEY (`Player_ID`);
+ALTER TABLE `region`
+  ADD PRIMARY KEY (`Region_name`,`Map_name`) USING BTREE;
+ALTER TABLE `spell`
+  ADD PRIMARY KEY (`Attack_name`);
+ALTER TABLE `world_list`
+  ADD PRIMARY KEY (`player_ID`),
+  ADD KEY `Region_name` (`Region_name`);
+ALTER TABLE `character_inventory`
+  ADD CONSTRAINT `character_inventory_ibfk_1` FOREIGN KEY (`Character_name`) REFERENCES `characters` (`Char_name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `character_inventory_ibfk_2` FOREIGN KEY (`Item_id`) REFERENCES `item_instance` (`Item_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `item_instance`
+  ADD CONSTRAINT `item_name_fk` FOREIGN KEY (`Item_name`) REFERENCES `item` (`Item_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `monster_instance`
+  ADD CONSTRAINT `monster_instance_ibfk_1` FOREIGN KEY (`Monster_name`) REFERENCES `monster` (`Monster_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `norm_atk`
+  ADD CONSTRAINT `norm_atk_ibfk_1` FOREIGN KEY (`Attack_name`) REFERENCES `attack` (`Attack_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `spell`
+  ADD CONSTRAINT `spell_ibfk_1` FOREIGN KEY (`Attack_name`) REFERENCES `attack` (`Attack_name`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `world_list`
+  ADD CONSTRAINT `playerID_fk` FOREIGN KEY (`player_ID`) REFERENCES `player` (`Player_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `world_list_ibfk_1` FOREIGN KEY (`Region_name`) REFERENCES `region` (`Region_name`);
 
 
-INSERT INTO ''() VALUES
-(),
-(),
-();
 
-3. SQL queries with results and description 
-joins, string operations, group by, aggregation, 
-having/order by, set union/intersection/minus, nested queries(in the from/with clause), 
-set membership/comparison, test empty relation/absence of duplicate tuples, delete/update tuples, 
-insert tuples selected from one table into another)
 
+3. SQL queries with results and description
+I found I needed to change the time of last_played to be a timestamp, that way when the player is created the last_played time is updated.
 ALTER TABLE 'player' CHANGE last_Played last_time_Played timestamp;
 
-CREATE TRIGGER trigger_name BEFORE INSERT ON column
-FOR EACH ROW
-BEGIN
-if() THEN
-INSERT INTO 'table'()
-END
+I checked my primary key in player was working:
+INSERT INTO `player` (`Player_ID`, `Player_name`, `Last_played_time`) VALUES ('1001', 'sabien ambrose', NULL) 
+Which resulted in error “duplicate entry ‘1001’ for key ‘primary’ 
+
+I checked the foreign key for monster_name:
+INSERT INTO `monster_instance` (`Monster_name`, `Monster_ID`, `Current_HP`) VALUES ('c', '7'
+, “1”)
+Which resulted in error “Cannot add or update a child row: a foreign key constraint fails (`dndtest`.`monster_instance`, CONSTRAINT `monster_instance_ibfk_1` FOREIGN KEY (`Monster_name`) REFERENCES `monster` (`Monster_name`) ON DELETE CASCADE ON UPDATE CASCADE)”
+
+If a player dies, it needs to be deleted:
+DELETE FROM monster_instance WHERE Current_HP = 0
+
+If a player uses a health pack, they need to be healed 15 hp.
+UPDATE characters SET current_HP = current_HP WHERE current_HP != HP
+
+To check if people are cheating and are logged in with two accounts:
+SELECT * FROM player WHERE Last_played_time=Now() GROUP BY Player_ID ORDER BY Player_name
+
+When a player attacks, we will need to check their attack from their weapon, as well as any items. To get the item damage we will split the string of the item stats field. If the return is “damage” then apply it to the hit. 
+SELECT SUBSTRING_INDEX(Item_Stats, '+', 1) FROM item_instance
+
+To display the number of characters currently playing in the map
+SELECT COUNT(player_ID) FROM world_list
+
+If a player wants to check how difficult a world is, we would gauge this by how many monsters are in the map, say less than 10.
+SELECT COUNT(Monster_name) FROM monster_instance HAVING COUNT(Monster_name) < 10
+
+If a player wants to see the stats of the characters in a party we will have to query the stats from the currently logged in members:
+SELECT Current_HP FROM characters RIGHT OUTER JOIN world_list ON world_list.player_ID = characters.Player_ID
+
+To check what players are currently hurt:
+SELECT COUNT(player_ID) FROM world_list WHERE EXISTS(SELECT player_ID FROM characters WHERE characters.HP != characters.Current_HP)
+
+For the developers to check what terrain the players prefer to play on at this moment:
+SELECT Count(Climate) from region INNER JOIN world_list ON world_list.Region_name = region.Region_name GROUP BY Climate
+
+To find out which items provide stats and not just appearance changes:
+SELECT Item_description FROM item WHERE Item_description IS NOT NULL
+
+Attack requirements are chosen by level of the character, to find out what attacks the character can do at level 1, we need to get just the attacks with 1-10 damage:
+SELECT Attack_Name FROM attack WHERE damage > 1 NOT IN( SELECT Attack_Name FROM attack WHERE damage > 10)
+
+Couldn’t find a good use for: inserting tuples selected from one table into another table, nested queries in the From clause, With Clause, or the Union.
+
 
 4. Original SQL specifications
 CREATE TABLE Player(
@@ -128,12 +328,7 @@ CREATE TABLE Monster_Instance(
 	Primary key(Monster_name, Monster_ID),
 	Foreign key(Monster_name) references Monster):
 
-
-5. Changes made to specification with justifications
-included "if not exists" and the InnoDB engine declaration to my create statements
-added column is logged in to player, to keep track of whether the player is logged in. this allows me to create a trigger: if the isLoggedIn column goes from yes to no, then set the timestamp to the current time to Now(). ADD default of Now() to lastPlayedTime as well,
-added check constraints on: damage column in attack, needs to be greater than 0
-added cascase on update/delete for foreign columns
-changed date column in Player to timestamp instead(rename)
+5. changes
+I added a character inventory, world list. The character inventory combines the character with items. The world list shows what region and map each player is on. Changed primary key in region to map_name, region_name as they are unique together.
 
 
