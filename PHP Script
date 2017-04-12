@@ -1,0 +1,123 @@
+index.html:
+<html>
+
+<head>
+<title> Player </title>
+</head>
+
+<body>
+<form action='player.php' method='post'>
+Insert Player <br>
+Player ID: <input type="text" name="p_id"><br>
+Player Name: <input type="text" name="p_name"><br>
+<input type="submit" value="Add Player"><br>
+</form>
+
+<form action='checkPlayer.php' method='post'>
+Inspect Player Account <br>
+Player Name: <input type="text" name="player_name"><br>
+<input type="submit" value="Check Account"><br>
+</form>
+</body>
+</html>
+
+
+
+
+
+
+player.php:
+
+<html>
+<body>
+
+<?php
+if($_SERVER["REQUEST_METHOD"]== "POST") {
+$conn = new mysqli('localhost', 'root', 'password', "dndtest");
+
+if ($conn->connect_error) {
+echo "connection failed";
+die("Connection failed: " . $conn->connect_error);
+}
+
+$Player_Name = (!empty($_POST["pname"]) ? $_POST["pname"] : null);
+$Player_ID = (!empty($_POST["pid"]) ? $_POST["pid"] : null);
+$Timestamp = date("Y-m-d h:i:s");
+
+$sql = "INSERT INTO player (Player_ID, Player_Name, Last_played_time) VALUES ('$Player_ID','$Player_Name','$Timestamp')";
+
+if(!mysqli_query($conn, $sql)){
+	echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+else{
+	echo "Inserted";
+}
+
+//header("refresh:2; url=index.html");
+
+mysqli_close($conn);
+
+}
+else{
+echo "search didnt get hit";
+}
+
+?>
+
+</html>
+</body>
+
+
+
+
+checkPlayer.php:
+
+<html>
+<body>
+
+<?php
+if($_SERVER["REQUEST_METHOD"]== "POST") {
+$conn = new mysqli('localhost', 'root', 'password', "dndtest");
+
+if ($conn->connect_error) {
+echo "connection failed";
+die("Connection failed: " . $conn->connect_error);
+}
+
+$Player_Name = (!empty($_POST["player_name"]) ? $_POST["player_name"] : null);
+
+$playerQuery = "SELECT * FROM player WHERE Player_Name='$Player_Name'";
+$characterQuery = "SELECT * FROM characters WHERE Player_ID=$Player_ID";
+
+if(!$playerResult = mysqli_query($conn, $playerQuery)){
+	echo "Error: " . $playerQuery . "<br>" . mysqli_error($conn);
+}else{
+	$playerRows = $playerResult->fetch_assoc();
+	
+}
+
+if($playerResult->num_rows != 0){
+	$Player_ID = $playerRows['Player_ID'];
+	
+	if($characterResult = mysqli_query($conn, $characterQuery)){
+		
+	}
+	else{
+		echo "Error: " . $characterQuery . "<br>" . mysqli_error($conn);
+	}
+}
+else{
+	echo "<p>No Player Found by the name $Player_Name</p>";
+}
+
+mysqli_close($conn);
+}
+else{
+	echo "search didnt get hit";
+}
+
+?>
+
+</html>
+</body>
+
