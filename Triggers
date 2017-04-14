@@ -1,0 +1,8 @@
+This trigger sets the timestamp to the current time when a user logs out (i.e. when characters.isLoggedIn changes from 1 to 0).
+
+CREATE TRIGGER update_time AFTER UPDATE ON characters FOR EACH ROW
+BEGIN
+IF NEW.isLoggedIn = 0 THEN
+UPDATE player SET player.Last_played_time = NOW() WHERE Player_ID = NEW.Player_ID;
+END
+
