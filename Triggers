@@ -3,6 +3,17 @@ This trigger sets the timestamp to the current time when a user logs out (i.e. w
 CREATE TRIGGER update_time AFTER UPDATE ON characters FOR EACH ROW
 BEGIN
 IF NEW.isLoggedIn = 0 THEN
-UPDATE player SET player.Last_played_time = NOW() WHERE Player_ID = NEW.Player_ID;
+UPDATE player SET Last_played_time = NOW() WHERE Player_ID = NEW.Player_ID;
 END
 
+
+This trigger adds one to the level of all logged in characters (everyone currently playing) if a monster is killed (the current health is set to 0)
+
+CREATE TRIGGER add_level AFTER UPDATE ON monster_instance FOR EACH ROW
+BEGIN
+IF NEW.Current_HP = 0 THEN
+UPDATE characters SET Char_level = Char_level + 1 WHERE isLoggedOn = 1;
+END
+
+Github wouldn't let me add an image to show these worked, but when changing a character from logged in to not, the timestamp is set to that time.
+Also, all characters logged on added a level when they killed a goblin.
