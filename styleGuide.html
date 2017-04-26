@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+<title>CodingStandards</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers msdt:dt="string">Adam Goldstein;Rezac, Brian;Amaya, Tony;Adam Goldstein;Mina, Ramez;Huck, Matt;Pettit, Frank;Adam Goldstein;Adam Goldstein;Steven Hawhee;Adam Goldstein;Sarah Clements;Bahwawsi, Bassem</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers>
+<mso:SharedWithUsers msdt:dt="string">6;#i:0#.f|membership|agoldstein@evolution1.com;#1096;#i:0#.f|membership|brian.rezac_benaissance.com#ext#@evolution1.com;#757;#i:0#.f|membership|tony.amaya_benaissance.com#ext#@evolution1.com;#6;#i:0#.f|membership|agoldstein@evolution1.com;#943;#i:0#.f|membership|ramez.mina_benaissance.com#ext#@evolution1.com;#1049;#i:0#.f|membership|matt.huck_benaissance.com#ext#@evolution1.com;#944;#i:0#.f|membership|frank.pettit_benaissance.com#ext#@evolution1.com;#6;#i:0#.f|membership|agoldstein@evolution1.com;#6;#i:0#.f|membership|agoldstein@evolution1.com;#730;#i:0#.f|membership|shawhee@evolution1.com;#6;#i:0#.f|membership|agoldstein@evolution1.com;#1053;#i:0#.f|membership|sclements@evolution1.com;#920;#i:0#.f|membership|bassem.bahwawsi_benaissance.com#ext#@evolution1.com</mso:SharedWithUsers>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Repakula, Sayi</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:Order msdt:dt="string">600.000000000000</mso:Order>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Repakula, Sayi</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+<div align=right><img src="http://www.benaissance.com/wp-content/uploads/2014/04/240x58_BEN_Logo_NoTag.png" alt="Benaissance"></div>
+<p><center><h1>C# Coding Standards Document</h1></center></p>
+<h1>Table of Contents</h1>
+<ol>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#structure">Structure of this document</a></li>
+<li><a href="#language">Language / Framework Guidelines</a></li>
+<li><a href="#classdesign">Class Design Guidelines</a></li>
+<li><a href="#designconsiderations">Design Considerations</a></li>
+<li><a href="#performance">Performance Guidelines</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#versioning">Document Revision History</a></li>
+</ol>
+<p><a name="purpose"></a></p>
+<h3>Purpose</h3>
+<p>Any successful piece of code is expected to stay for relatively long periods of time and hence during its course there will be bug fixes and new features added. There will be more than one software developer touching this code during specific instances of time. So, in order to enable development of code for the long haul and improve code maintainability this document attempts to provide specific set of standards and guidelines for the development of C# code. As developers gain depth in coding for a specific version of the language there will be some patterns that can be derived into these standards that will insure future development with repeatable design thoughts. The set of objectives this document tries to address are as follows:</p>
+<ul>
+<li>Fewer coding bugs</li>
+<li>Increase IP value of the company</li>
+<li>Minimize learning curve for developers moving from one application to another</li>
+<li>Minimize learning curve for new developers</li>
+<li>Faster development with proven or familiar patterns and approaches </li>
+</ul>
+<p>Similar to coding style changes, C# as a language changes over different releases of .Net and hence this will be a live document that needs updates to include such changes over time.</p>
+<p>General Microsoft coding guidelines must be followed for all the topics not specifically addressed by this document. Some of Microsoft and other useful links are provided in the References section.</p>
+<!-- Commented -----
+###Current Painpoints -This section will be removed after these concerns are addressed in this or other document
+- Project dependencies 
+- Project naming conventions
+- nuget publishing
+- logic separation layers (domain driven)
+
+========================== From Dev Leads meeting 11/20/15
+
+Naming Conventions
+Code Formatting
+Short Methods with clear focus on a specific thing
+usage of var
+Expectations on Curly races
+Namespaces
+
+constants
+Class level vars
+properties
+public methods
+private methods
+
+Development Layers
+
+Architectural Discussion Review:
+- add these into style cop or Roslyn
+- Code Review 
+
+==========================
+-->
+<p><a name="structure"></a></p>
+<h3>Structure of this document</h3>
+<p>This document is organized into sections that are relevant for the development of software. Each section consists of a set of topics. By default every topic is considered as a <strong>guideline</strong> unless indicated otherwise. Instead, if a topic has to be treated as a standard, at end of that topic there will be a superscript indicating that it is a standard.<sup><strong>Standard</strong></sup>. It is expected that developers conform to standards and take guidelines as a general set of conventions to follow and will use their best judgment in employing those based on the situation.</p>
+<p>Since there is sizable existing software already built for Benaissance (Evolution1 Omaha), the standards in this document applies to all new code and in case of modifications, to only the modifying code sections. In other words, there is no expectation to re-fix every method in each class that is being touched during changes.</p>
+<p>Architectural team will be responsible for preparing and maintaining this document. The examples (or code snippets) provided within this document are for illustrative purposes and may not compile as is.  Architectural team has to be consulted for comments, issues or discrepancies so that this document can be kept up to date.</p>
+<hr />
+<p><a name="language"></a></p>
+<h2>Language / Framework Guidelines</h2>
+<ol>
+<li>
+<p>Use default Code Editor settings for smart indenting and use tabs instead of spaces <sup><strong>Standard</strong></sup></p>
+</li>
+<li>
+<p>Code one statement per line  <sup><strong>Standard</strong></sup></p>
+</li>
+<li>
+<p>Have one declaration per line even though many variables are declared with a single statement</p>
+<pre><code>
+string str1 = "",
+	str2 = "",
+	str3 = "",
+	str4 = "",
+	str5 = "";
+	This makes the declarations more readable.
+</pre><p></code></p>
+</li>
+<li>
+<p>Use var only when the type can be determined by reading the statement. Use explicit type when it is not clear.</p>
+<pre><code>
+string person = "Marcus";
+string date="Date";
+DateTime hardcodedDate = new DateTime(2014,02,15);
+
+// vs2013 or lower:
+var blah = string.Format("This is an example of {0} hardcoding a {1}, {2}", person, date, hardcodedDate);
+(or)
+// Using New VS2015 String interpolation feature:
+var blah = $("This is an example of {person} hardcoding a {date},{hardcodedDate});
+
+// Note that this follows the convention, in both cases of using var instead of string because you can 
+// tell that var is a string by looking at the right side of "=" sign.
+
+// Next look at the following code that will not make the type obvious from the right side of the assignment.
+
+var blah = GetThatThing(person,date,hardcodedDate);
+
+// It is not clear as to what is returned by GetThatThing (what is in the box? Some object type or 
+// just a string???) and hence is not valid use of 'var'. It must be explicitly declared in this case.
+
+string blah = GetThatThing(person,date,hardcodedDate);
+
+</code></pre>
+</li>
+<li>
+<p>Use parentheses to make clauses in an expression apparent, as shown in the following code. </p>
+<pre><code>
+if ((val1 > val2) && (val1 > val3))
+{
+    ...
+}
+</code></pre>
+</li>
+<li>
+<p>Use StringBuilder for string operations involving more than simple strings. <br></p>
+<p>Strings are immutable as once they are created they cannot be changed. So when the value in a string variable changes, .Net creates a different string in memory behind the scenes and assigns it to the variable. On the other hand, StringBuilder is created as an object that can be altered by using associated methods such as Append() and Replace() </p>
+<pre><code>
+var phrase = "this is a big string that would need StringBuilder to make efficient operations\n";
+
+var manyPhrases = new StringBuilder();
+for (var i = 0; i < 100; i++)
+{
+    manyPhrases.Append(phrase);
+}
+Console.WriteLine("oh! " + manyPhrases);
+</code></pre>
+</li>
+<li>
+<p>Simplify code by using &quot;using&quot; statement. <br></p>
+<p>If you have a try-finally statement in which the only code in the finally block is a call to the Dispose method, use a using statement instead. In order to enable a class to be used by using statement it must be implementing IDisposable interface.</p>
+<pre><code>
+namespace OfficeOpenXml
+{
+	public sealed class ExcelPackage : IDisposable
+	{
+	...
+	...
+	...
+        public void Dispose()
+        {
+            if (this._package != null)
+            {
+                if (( !this._isExternalStream && 
+					( this.Stream != null )) && 
+					( this.Stream.CanRead || 
+					 this.Stream.CanWrite ))
+                {
+                    this.Stream.Close();
+                }
+
+                this._package.Close();
+
+                if (!this._isExternalStream)
+                {
+                    this._stream.Dispose();
+                }
+
+                if (this._workbook != null)
+                {
+                    this._workbook.Dispose();
+                }
+
+                this._package = null;
+                this._images = null;
+                this._file = null;
+                this._workbook = null;
+                this._stream = null;
+                this._workbook = null;
+            	}
+        	}
+		}
+	}
+}
+
+// Within the main program, the following using statement will take care of calling the dispose on the <br>// ExcelPackage's instance of detailReport.
+...
+...
+...
+using( ExcelPackage detailReport = new ExcelPackage(new FileInfo(excelFileName)))
+{
+			ExcelWorksheet summarySheet = detailReport.Workbook.Worksheets.Add("Summary");
+            ExcelWorksheet subscriberSheet = detailReport.Workbook.Worksheets.Add("Subscribers");
+            ExcelWorksheet adjustmentSheet = detailReport.Workbook.Worksheets.Add("Adjustments");
+			...
+			...
+			...
+ 			detailReport.Save();
+}
+</code></pre>
+<p><em>Microsoft's documentation states:</em> As a rule, when you use an IDisposable object, you should declare and instantiate it in a using statement. The using statement calls the Dispose method on the object in the correct way, and (when you use it as shown earlier) it also causes the object itself to go out of scope as soon as Dispose is called. Within the using block, the object is read-only and cannot be modified or reassigned.</p>
+</li>
+<li>
+<p>Use Object initializers to simplify object creation<br><br>
+Instead of creating overloaded constructors that takes several parameters for simple initialization purposes, use object initializers. This also helps in getting the object's initial state from null to fully initialized.</p>
+<pre><code>
+var BenefitFocus = new Group
+{
+    GroupName = "Craig",
+    Contact = new GroupContact { ... },
+    SponsorExchangeID = "XXXX23"
+};
+</code></pre>
+</li>
+<li>
+<p>Use meaningful names for variables. The following example uses firstInvoices for holding Invoice objects that qualify for first time invoice generation.<br></p>
+<pre><code>
+	{
+		List<Invoice> firstInvoices = GetFirstSetOfInvoicesToProcess(...);
+		.
+		.
+		.
+	}
+
+</code></pre>
+</li>
+<li>
+<p>Use Pascal casing for class names and method names<sup><strong>Standard</strong></sup><br>
+With Pascal casing the first letter in each of the concatenated words of an identifier is capitalized. As a convention this needs to be used for naming of all classes and methods.</p>
+<pre><code>
+	Sponsor
+
+	DataService
+
+	JobQueueEntry
+
+</code></pre>
+</li>
+<li>
+<p>Use Camel casing for method arguments and local variables<sup><strong>Standard</strong></sup><br>
+With Camel casing the first letter of the identifier is lowercase and the first letter of each subsequent concatenated words are capitalized. As a convention this needs to be used for naming method arguments and local variables.</p>
+<pre><code>
+	public ProcessPaymentResponse ACHPaymentProcessing(
+			string asyncReplyToUrl, 
+			string connectionString, 
+			Guid userId, 
+			hbeDto.OneTimeACHPayment achPayment, 
+			PaymentOriginator originator, 
+			hbeEnum.MessageType messageType, 
+			string messageId)
+	{
+		int achEntityID = 0;
+		.
+		.
+		.
+	}
+
+</code></pre>
+</li>
+</ol>
+<hr />
+<p><a name="classdesign"></a></p>
+<h2>Class Design Guidelines</h2>
+<ol>
+<li>
+<p>Classes should have state and behavior with the exception of DTO classes</p>
+</li>
+<li>
+<p>Use interfaces for decoupling classes and for supporting multiple implementations<br>
+Interfaces are a great way to separate contract from specific implementation. Per good object oriented design principles interfaces are not allowed to change once they are deployed as each and every implementation would depend on the contract defined by the interface. [This is not true with abstract classes even though they provide separation of contract as they can be changed similar to classes for providing additional functionality. When new methods are needed, another interface can be added without changing the existing one. This way interfaces can be kept small and focused.]</p>
+</li>
+</ol>
+<!-- todo add examples -->
+<ul>
+<li>Use classes over interfaces<br>
+Adding new members to an existing interface will break code and such changes should be avoided wherever possible. Instead classes or abstract classes can be used so that they can be changed without breaking the code. 
+(https://msdn.microsoft.com/en-us/library/vstudio/ms229022(v=vs.100).aspx)</li>
+</ul>
+<!-- todo add examples -->
+<ul>
+<li>
+<p>A class or interface should have a single purpose <br>
+Based on Single Responsibility Principle by Robert Martin, a class must be designed to have a single responsibility and all the services within the class must be narrowly aligned with this objective. When a class is overloaded with different types of responsibilities it would become more fragile, more coupled, hard to test, debug or making changes. (https://dzone.com/articles/single-responsibility)</p>
+</li>
+<li>
+<p>A method or property should do only one thing <br>
+Overloading methods with variety of functionality leads to low testability </p>
+</li>
+<li>
+<p>Don't refer to derived classes from base class <br>
+Having dependencies from a base class to its sub-classes goes against proper object oriented design and might prevent other developers from adding new derived classes.(aviva solutions pdf)</p>
+</li>
+<li>
+<p>Avoid bidirectional Dependencies <br>
+This means that two classes know about each other’s public members or rely on each other’s internal behavior. Refactoring or replacing one of those two classes requires changes on both parties and may involve a lot of unexpected work. The most obvious way of breaking that dependency is introducing an interface for one of the classes and using Dependency Injection. (taken from aviva pdf)</p>
+</li>
+<li>
+<p>Allow properties to be set in any order - guideline
+Properties should be stateless with respect to other properties and hence can be set in any order <br><br>
+For example, there should not be a difference between first setting property DataSource and then DataMember or vice versa. Avoid embedding business rules in the setters / getters.</p>
+</li>
+<li>
+<p>Call static members by using the class name: ClassName.StaticMember. This practice makes code more readable by making static access clear. Do not qualify a static member defined in a base class with the name of a derived class. While that code compiles, the code readability is misleading, and the code may break in the 
+future if you add a static member with the same name to the derived class.</p>
+</li>
+<li>
+<p>Do not rely on the variable name to specify the type of the variable. It might not be correct.</p>
+<pre><code>
+	string retCode = "alpha";
+
+	var myInvoices = GetAllSubscribers();	// Here subscribers are returned as a collection
+
+	.
+	.
+	.
+	Relying on the names to decipher the type will produce incorrect outcome.
+</code></pre>
+</li>
+<li>
+<p>Don’t hide inherited members with the new modifier<br>
+Extending a base class with 'new' modifier breaks the object oriented principle of polymorphism and it often leads to confusing behavior and hence it has to be avoided. The proper way is to use 'override' modifier so that the derived version is called all the time.</p>
+<pre><code>class BaseClass
+{
+	public void MethodForNew()
+	{
+    	Console.WriteLine("Base - MethodForNew");
+	}
+}
+
+class DerivedClass : BaseClass
+{
+	public new void MethodForNew()
+	{
+	    Console.WriteLine("Derived - MethodForNew");
+	}
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        BaseClass baseDerived = new DerivedClass();
+        baseDerived.MethodForNew();
+    }
+    // Output:
+    // Base - MethodForNew <-- Uses base version of the implementation even though the instantiated class is derived ones.<br>    // This breaks polymorphism !!
+}
+</code></pre>
+<p>Now, let's take a look at the proper usage of the override modifier</p>
+<pre><code>class BaseClass
+{
+	public virtual void MethodForOverride()
+	{
+    	Console.WriteLine("Base - MethodForOverride");
+	}
+}
+
+class DerivedClass : BaseClass
+{
+	public override void MethodForOverride()
+	{
+	    Console.WriteLine("Derived - MethodForOverride");
+	}
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        BaseClass baseDerived = new DerivedClass();
+        baseDerived.MethodForOverride();
+    }
+    // Output:
+    // Derived - MethodForOverride <- Uses the derived version of the method as expected.
+}
+</code></pre>
+</li>
+<li>
+<p>Do not use static except for Extension methods.<sup><strong>Standard</strong></sup><br> </p>
+</li>
+<li>
+<p>Don’t use mutually exclusive properties
+Using multiple properties to indicate mutually exclusive values require maintenance of exclusivity of the values for the entire life span of the application, or else, would lead to buggy situations. Often time usage of boolean property would be sufficient and hence this type of must be avoided.</p>
+<pre><code>
+public class Settings
+{
+    public bool IsOn { get; set; }
+    public bool IsOff { get; set; }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+
+		// Initially, kitchen lights are set to on.
+        	var kitchenLights = new Settings { IsOn = true, IsOff = false };
+		Console.WriteLine("isOn = {0} isOff = {1}", buttonSettings.IsOn, buttonSettings.IsOff);
+
+		// Trying to turn off the kitchen lights, but forgot to set both the values to achieve it.
+		buttonSettings.IsOff = true;
+		Console.WriteLine("After the change in values,\n isOn = {0} isOff = {1}", 
+						buttonSettings.IsOn, buttonSettings.IsOff);
+
+    }
+    // Output:
+    	isOn = True isOff = False
+	After the change in values,
+	isOn = True isOff = True
+}
+This could have been better maintained by just using the IsOn property. 
+</code></pre>
+</li>
+<li>
+<p>Return an IEnumerable<T> or ICollection<T> instead of a concrete collection class <br>
+This holds good for usage of methods internally. [For external usage  would be appropriate.] - <!-- todo add proper verbiage --></p>
+</li>
+<li>
+<p>Properties, methods and arguments representing strings or collections should never be null
+Consider using Enumerable.Empty() when returning null.</p>
+</li>
+<li>
+<p>Define parameters as specific as possible</p>
+</li>
+</ul>
+<hr />
+<p><a name="designconsiderations"></a></p>
+<h2>Design Considerations</h2>
+<ol>
+<li>
+<p>Throw exceptions rather than returning some kind of status value</p>
+</li>
+<li>
+<p>Throw the most specific exception that is appropriate<br>
+For example, if a method receives a null argument, it should throw ArgumentNullException instead of its base type ArgumentException.</p>
+</li>
+<li>
+<p>Deferred execution for linq queries
+Any Linq query is not executed the moment it is declared. Instead it waits till the first operation is called out of the query.</p>
+<pre><code>
+string sponsorID = "SHOP0319A";	 <- Expected value for the query criteria below.
+var groupQuery = from g in TblClients
+	where g.SponsorExchangeID == sponsorID
+	select g; // <- Query has not been executed yet.
+
+// If you are assuming the query's result will be for group "SHOP0319A", it is not guaranteed <br>// yet at this point.
+
+sponsorID = "SHOP0319B";
+
+
+foreach (var grp in groupQuery)	// <- Query is executed here; 
+{
+    Console.WriteLine(grp);
+}
+
+// Since the query is executed at a later time and since the value in sponsorID has changed by <br>// that time, the query has produced a different result.
+</code></pre>    
+</li>
+</ol>
+<p>Understanding this delayed execution is critical and if this fact is ignored the resultant bug would be harder to debug.</p>
+<h3>Namespace conventions<br></h3>
+<p>Microsoft's guidance on definining namespaces works pretty well as it considers all the boundaries required for distributing software.</p>
+<pre><code>&lt;pre&gt;&lt;code&gt;
+    &lt;Company&gt;.(&lt;Product&gt;|&lt;Technology&gt;)[.&lt;Feature&gt;][.&lt;Subnamespace&gt;]
+
+    Benaissance.Exchangepoint.Payments.DAL
+
+    Evolution.Exchangepoint.Allocation.Premiums
+&lt;/code&gt;&lt;/pre&gt;    
+</code></pre>
+
+<p>In the above examples, there is no need to change existing namespaces with a change in company name. New modules can be developed using the changed company name but the ones already developed will still be unique without change in the namespace. </p>
+<hr />
+<p><a name="performance"></a></p>
+<h2>Performance Guidelines</h2>
+<ol>
+<li>Always use Any() to determine whether an IEnumerable<T> is empty</li>
+</ol>
+<hr />
+<p><a name="references"></a></p>
+<h2>References</h2>
+<ul>
+<li>https://msdn.microsoft.com/en-us/library/ff926074.aspx - Microsoft C# coding guidelines</li>
+<li>https://msdn.microsoft.com/en-us/library/ms229026(v=vs.110).aspx</li>
+<li>https://msdn.microsoft.com/en-us/library/ms229026(v=vs.110).aspx  - namespaces</li>
+<li>http://www.perlmonks.org/?node_id=776607</li>
+<li>https://csharpguidelines.codeplex.com/downloads/get/540283 - aviva solutions pdf</li>
+<li>http://www.perlmonks.org/?node_id=776607 - Why Coding Standards:</li>
+<li>https://msdn.microsoft.com/en-us/library/yh598w02.aspx - Using statement</li>
+</ul>
+<hr />
+<p><a name="versioning"></a></p>
+<h2>Document Revision History</h2>
+<p><strong>Version# | Release Date | Person | Details<br></strong>
+0.5 | 11/9/2015 |Sayi Repakula |Draft
+1.0 | 2/17/2016 |Sayi Repakula |Initial Release  
+</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->
